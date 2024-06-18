@@ -59,3 +59,5 @@ group :test do
 end
 
 gem 'dotenv-rails'
+
+gem "solid_queue", "~> 0.3.3"
