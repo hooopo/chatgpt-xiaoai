@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_06_17_182345) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_19_232513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "user_id"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "default_device_id"
+    t.json "authenticated_data", default: {}
+  end
+
+  create_table "devices", primary_key: "device_id", id: :string, force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "serial_number"
+    t.string "name"
+    t.string "alias"
+    t.boolean "current"
+    t.string "presence"
+    t.string "address"
+    t.string "miot_did"
+    t.string "hardware"
+    t.string "rom_version"
+    t.json "capabilities"
+    t.string "remote_ctrl_type"
+    t.text "device_sn_profile"
+    t.text "device_profile"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
     t.bigint "job_id", null: false

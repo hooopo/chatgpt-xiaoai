@@ -1,0 +1,44 @@
+<!-- app/views/devices/index.html.erb -->
+
+<div class="container mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-6"> 
+    <h1 class="text-2xl font-bold text-gray-800">请选择你的小爱音箱</h1>
+    <%= link_to '刷新设备', "#", class: 'bg-blue-500 text-sm text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50' %>
+  </div>
+  
+  <div class="space-y-6">
+    <% @devices.each do |device| %>
+      <div class="bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden">
+        <div class="p-4 bg-gray-50 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-gray-800"><%= link_to device.name, device_path(device), class: "text-blue-600 hover:underline" %></h2>
+            <span class="<%= device.presence == 'online' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' %> px-3 py-1 rounded-full text-xs font-medium">
+              <%= device.presence.capitalize %>
+            </span>
+          </div>
+        </div>
+        
+        <div class="p-4">
+          <dl class="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <dt class="text-sm font-medium text-gray-500">Device ID</dt>
+              <dd class="mt-1 text-sm text-gray-900"><%= link_to device.id, device_path(device), class: "hover:underline" %></dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">Alias</dt>
+              <dd class="mt-1 text-sm text-gray-900"><%= device.alias %></dd>
+            </div>
+            <div>
+              <dt class="text-sm font-medium text-gray-500">miotDID</dt>
+              <dd class="mt-1 text-sm text-gray-900"><%= device.miot_did %></dd>
+            </div>
+            <div class="sm:col-span-2">
+              <dt class="text-sm font-medium text-gray-500">Hardware</dt>
+              <dd class="mt-1 text-sm text-gray-900"><%= device.hardware %></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -61,3 +61,4 @@ end
 gem 'dotenv-rails'
 
 gem "solid_queue", "~> 0.3.3"
+gem "mi-service", path: "/Users/hooopo/work/mi-service"
