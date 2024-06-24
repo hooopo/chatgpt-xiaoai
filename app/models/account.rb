@@ -1,7 +1,14 @@
 class Account < ApplicationRecord
   has_many :devices
+  has_many :messages
 
   belongs_to :default_device, optional: true
+
+  def service
+    @service ||= Mi::Service::Account.new(user_id, password, debug: true)
+    @service.login_from_data(authenticated_data)
+    @service
+  end
 
   def create_devices_from_service(list)
     list.each do |d|
@@ -23,7 +30,7 @@ class Account < ApplicationRecord
       }
 
       if device = self.devices.where(device_id: d["deviceID"]).first
-        self.devices.update(attrs)
+        device.update(attrs)
       else
         self.devices.create(attrs)
       end

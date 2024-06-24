@@ -58,7 +58,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 gem "solid_queue", "~> 0.3.3"
-gem "mi-service", path: "/Users/hooopo/work/mi-service"
+gem "mi-service"
+
+gem "ruby-openai", "~> 7.1"

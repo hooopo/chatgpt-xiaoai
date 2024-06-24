@@ -11,7 +11,13 @@
       <div class="bg-white shadow-sm border border-gray-200 rounded-lg overflow-hidden">
         <div class="p-4 bg-gray-50 border-b border-gray-200">
           <div class="flex items-center justify-between">
-            <h2 class="text-lg font-semibold text-gray-800"><%= link_to device.name, device_path(device), class: "text-blue-600 hover:underline" %></h2>
+            <h2 class="text-lg font-semibold text-gray-800">
+              <% if device.tts_support? %>
+                <%= link_to device.name, device_path(device), class: "text-blue-600 hover:underline" %>
+              <% else %>
+                <%= device.name %>
+              <% end %>
+            </h2>
             <span class="<%= device.presence == 'online' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' %> px-3 py-1 rounded-full text-xs font-medium">
               <%= device.presence.capitalize %>
             </span>
@@ -22,7 +28,13 @@
           <dl class="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
             <div class="sm:col-span-2">
               <dt class="text-sm font-medium text-gray-500">Device ID</dt>
-              <dd class="mt-1 text-sm text-gray-900"><%= link_to device.id, device_path(device), class: "hover:underline" %></dd>
+              <dd class="mt-1 text-sm text-gray-900">
+              <% if device.tts_support? %>
+                <%= link_to device.id, device_path(device), class: "hover:underline" %>
+              <% else %>
+                <%= device.id %>
+              <% end %>
+              </dd>
             </div>
             <div>
               <dt class="text-sm font-medium text-gray-500">Alias</dt>

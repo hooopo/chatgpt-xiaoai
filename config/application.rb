@@ -24,5 +24,6 @@ module ChatgptXiaoai
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.session_store :cookie_store, key: "_chatgpt_xiaoai_session", expire_after: 1.year
+    config.solid_queue.silence_polling = false
   end
 end

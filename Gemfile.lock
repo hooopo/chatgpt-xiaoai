@@ -95,12 +95,6 @@ GIT
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
 
-PATH
-  remote: /Users/hooopo/work/mi-service
-  specs:
-    mi-service (0.1.0)
-      faraday
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -139,8 +133,11 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    event_stream_parser (1.0.0)
     faraday (2.9.2)
       faraday-net_http (>= 2.0, < 3.2)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
     faraday-net_http (3.1.0)
       net-http
     fugit (1.11.0)
@@ -174,9 +171,12 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    mi-service (1.0.0)
+      faraday
     mini_mime (1.1.5)
     minitest (5.23.1)
     msgpack (1.7.2)
+    multipart-post (2.4.1)
     net-http (0.4.1)
       uri
     net-imap (0.4.12)
@@ -266,6 +266,10 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    ruby-openai (7.1.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.21.1)
@@ -343,11 +347,12 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
-  mi-service!
+  mi-service
   pg (~> 1.1)
   puma (>= 5.0)
   rails!
   rubocop-rails-omakase
+  ruby-openai (~> 7.1)
   selenium-webdriver
   solid_queue (~> 0.3.3)
   sprockets-rails

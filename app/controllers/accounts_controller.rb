@@ -1,22 +1,22 @@
 class AccountsController < ApplicationController
-  def new 
+  def new
   end
 
   def create
     account_service = Mi::Service::Account.new(params[:user_id], params[:password], debug: true)
-    account_service.login("xiaomiio")
+    account_service.login("xiaomiio") rescue binding.irb
     if account_service.success?
       account_service.login_all
       account = Account.where(user_id: params[:user_id]).first
       if account.nil?
         account = Account.create(
-          user_id: params[:user_id], 
-          password: params[:password], 
+          user_id: params[:user_id],
+          password: params[:password],
           authenticated_data: account_service.info
         )
       else
         account.update(
-          password: params[:password], 
+          password: params[:password],
           authenticated_data: account_service.info
         )
       end
