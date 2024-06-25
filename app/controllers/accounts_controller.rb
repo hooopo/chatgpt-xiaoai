@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
 
   def create
     account_service = Mi::Service::Account.new(params[:user_id], params[:password], debug: true)
-    account_service.login("xiaomiio") rescue binding.irb
+    account_service.login("xiaomiio")
     if account_service.success?
       account_service.login_all
       account = Account.where(user_id: params[:user_id]).first
