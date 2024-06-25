@@ -10,6 +10,12 @@ class Account < ApplicationRecord
     @service
   end
 
+  def relogin
+    @service = Mi::Service::Account.new(user_id, password, debug: true)
+    @service.login_all
+    update(authenticated_data: @service.info)
+  end
+
   def create_devices_from_service(list)
     list.each do |d|
       attrs = {
