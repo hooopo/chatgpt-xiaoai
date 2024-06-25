@@ -6,7 +6,7 @@ default: &default
         my_periodic_job:
           class: TestJob
           args: [ 42 ]
-          schedule: every second
+          schedule: every 3 second
   workers:
     - queues: "*"
       threads: 3

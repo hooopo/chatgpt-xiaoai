@@ -53,6 +53,12 @@ class Device < ApplicationRecord
     account.service.player_get_status(device_id)
   end
 
+  def playing?
+    info_text = player_get_status.dig("data", "info")
+    info = JSON.parse(info_text)
+    info["status"] == 1
+  end
+
   def fetch_messages!
     data = latest_messages(limit: 2)["data"]
     records = JSON.parse(data)["records"]
