@@ -106,7 +106,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
-    brakeman (6.1.2)
+    brakeman (6.2.1)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -212,7 +212,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.8.0)
+    racc (1.8.1)
     rack (3.1.4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
