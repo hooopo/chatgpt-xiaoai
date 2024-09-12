@@ -60,7 +60,7 @@ end
 
 gem "dotenv-rails"
 
-gem "solid_queue", "~> 0.3.3"
+gem "solid_queue", "~> 0.9.0"
 gem "mi-service"
 
 gem "ruby-openai", "~> 7.1"
